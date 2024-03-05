@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container-fluid">
+    <div class="row main_header">
+        <div class="col-md-4 col-sm-12 logo_header">
+            <img class="imaglogo" src="/assets/uhlogo.png">
+
+            <h4 style="margin-top:-5px;margin-left: 28px;"><strong> <span style="color: rgb(255,110,7);">U</span>nique<span
+                style="color: rgb(255,110,7);">HR</span> </strong></h4>
+
+        </div>
+        <div class="col-md-4 col-sm-12 wishes">
+            <!-- <h4>{{greeting}}</h4> -->
+        </div>
+        <div class="col-md-4 col-sm-12 right_side">
+            <em class="fa-sharp fa-solid fa-gear"></em>
+            <!-- <button class="btn_style_logout" (click)="closetab()">Logout <em class="fa-solid fa-right-from-bracket"></em></button> -->
+        </div>
+    </div>
+</div>
+    <div class="container mt-3">
+        <h2 style="text-align:center;color: rgb(252,103,1);font-weight: bold;" class="d-flex justify-content-center">Recruiter Activity</h2>
+       
+             <!-- <div class="col-lg-6 col-md-8 col-sm-3">
+                <input type="text" placeholder="Search" style="width: 450px;margin-top: 30px;" [(ngModel)]="search" [ngModelOptions]="{ standalone: true }" class="form-control mx-auto" id="search" required (input)="searchData()">
+            </div> -->
+
+         <div class="d-flex justify-content-between align-items-center"> 
+        <input type="text" placeholder="search" [(ngModel)]="search" [ngModelOptions]="{ standalone: true }" class="form-control m-0" id="search"
+            required (input)="searchData()"> 
+            <div class="btn ">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">Create</button>
+            </div>
+    </div>
+            <div class="btn"></div>
+            <div class="table-responsive mt-0">
+                <table class="table">
+
+            <thead>
+                <tr class="tablehead">
+
+                    <th scope="col" style="width: 100px;">Sl No</th>
+                    <th scope="col">Recruiter Name</th>
+                    <th scope="col">No of Client Submissions</th>
+                    <th scope="col">Interview Schedule</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">No. Of Show/Cancel/Re- Schedule</th>
+                    <th scope="col">No Selection</th>
+                    <th scope="col">No Onboarding</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let studentItem of studentArray; index as i;">
+                    <td>{{i+1 }}</td>
+                    <td>{{ studentItem.Recruiter_Name }}</td>
+                    <td>{{ studentItem.No_of_client_submissions }}</td>
+                    <td>{{ studentItem.Interview_schedule }}</td>
+                    <td>{{ studentItem.Completed }}</td>
+                    <td>{{ studentItem.No_Of_Schedules }}</td>
+                    <td>{{ studentItem.No_Selection }}</td>
+                    <td>{{ studentItem.No_Onborading }}</td>
+                    <td style="width:7rem">{{ studentItem.Date }}</td>
+                    <td>
+                        <a href="#editEmployeeModal" style="color:rgb(254,198,30);" data-bs-toggle="modal" data-bs-target="#exampleModals" (click)="updateGetID(studentItem)" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!-- <button type="button" class="btn btn-outline-primary " data-bs-toggle="modal" -->
+                            <!-- data-bs-target="#exampleModals" (click)="updateGetID(studentItem)">Edit</button> -->
+
+                    </td>
+                   <td>
+                    <a href="#deleteEmployeeModal" class="delete" style="color:rgb(245,85,73);" data-bs-toggle="modal"data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Delete" (click)="setdelete(studentItem.Sno)">&#xE872;</i></a>
+                                                       <td> 
+                        <i class="bi bi-download" style="color:rgb(245,85,73); font-size: 20px;" (click)="downloadData(studentItem)"></i>
+                                    </td>
+                        
+                </tr>
+                
+                <tr *ngIf="studentArray.length===0">No data found</tr>
+
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create new Recruiter Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="client">
+                        <form class="row g-3 needs-validation" novalidate (ngSubmit)="submitForm()">
+                            <!-- Form fields for recruiter activity data -->
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">Recruiter Name</label>
+                                <input type="text" [(ngModel)]="formData.Recruiter_Name"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername"
+                                    class="form-label">No_of_client_submissions</label>
+                                <input type="number" [(ngModel)]=" formData.No_of_client_submissions"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername" class="form-label">Interview schedule</label>
+                                <input type="number" [(ngModel)]=" formData.Interview_schedule"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername" class="form-label">Completed</label>
+                                <input type="number" [(ngModel)]=" formData.Completed"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No_Of_Schedules
+                                </label>
+                                <input type="text" [(ngModel)]="formData.No_Of_Schedules"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No.Selection </label>
+                                <input type="text" [(ngModel)]="formData.No_Selection"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No.Onborading</label>
+                                <input type="text" [(ngModel)]=" formData.No_Onborading"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Offer Drops</label>
+                                <input type="text" [(ngModel)]="formData.Offer_Drops"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">date
+
+                                </label>
+                                <input type="date" [(ngModel)]="formData.Date" [ngModelOptions]="{ standalone: true }"
+                                    class="form-control" id="validationCustom01" required>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer mt-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" (click)="submitForm()">Save</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---edit-->
+
+    <div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Recruiter Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="client">
+                        <form class="row g-3 needs-validation">
+                            <!-- Form fields for recruiter activity data -->
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">Recruiter Name</label>
+                                <input type="text" [(ngModel)]="formData.Recruiter_Name"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername"
+                                    class="form-label">No_of_client_submissions</label>
+                                <input type="number" [(ngModel)]=" formData.No_of_client_submissions"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername" class="form-label">Interview schedule</label>
+                                <input type="text" [(ngModel)]=" formData.Interview_schedule"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustomUsername" class="form-label">Completed</label>
+                                <input type="number" [(ngModel)]=" formData.Completed"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No_Of_Schedules
+                                </label>
+                                <input type="text" [(ngModel)]="formData.No_Of_Schedules"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No.Selection </label>
+                                <input type="number" [(ngModel)]="formData.No_Selection"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">No.Onborading</label>
+                                <input type="number" [(ngModel)]=" formData.No_Onborading"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Offer Drops</label>
+                                <input type="number" [(ngModel)]="formData.Offer_Drops"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" id="validationCustom01"
+                                    required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">date
+
+                                </label>
+                                <input type="date" [(ngModel)]="formData.Date" [ngModelOptions]="{ standalone: true }"
+                                    class="form-control" id="validationCustom01" required>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer mt-2">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            (click)="updateData()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Delete Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                        (click)="deleteData()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-root></app-root>
+</body>
+
+</html>

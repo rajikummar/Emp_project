@@ -1,0 +1,245 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.tablevalue{
+    margin-left: -75px;
+}
+.imaglogo{
+width: 60px;
+height: 50px;
+margin-left: 50px;
+margin-top: 5px;
+}
+
+.headvalue{
+    margin-left: 500px;
+}
+.btncreate{
+    margin-left: 400px;
+}
+
+
+#btn-main{
+    background-color:#5b00b5;
+    color: #fff;
+    padding:10px;
+    border-radius:10px;
+    cursor: pointer;
+    position: relative;
+    right: 820px;
+}
+/* form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+    height: 150px;
+    border: 3px solid #5b00b5;
+    background-color: #fff;
+    box-shadow: 2px 3px 10px black;
+} */
+
+#All-Head-input{
+    margin-top: 25px; 
+}
+#Name{
+    margin-left: 60px;
+}
+.form-control{
+    width: 200px;
+    margin-left: 30px;
+}
+.form-label{
+    margin-left: 30px;
+}
+controle > input:checked ~ .operator
+{
+  display: block;
+}
+
+.controle > input:hover ~  .c-icon
+{
+  animation:wave 1s ease-in-out infinite;
+}
+
+/* animation add button */
+svg {
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+
+.goldberg-card > input:hover ~ .icon-btn {
+  transition: 1s ease-in-out;
+  background: #fd255b;
+}
+.goldberg-card > input:hover ~ .icon-btn svg {
+  opacity: 1;
+  stroke-dashoffset: -480;
+}
+
+
+#All-Input{
+    text-align: center;
+}
+#All-Input input{
+    border: none;
+    padding: 7px;
+    margin: 0px 15px;
+    border-radius: 5px;
+    width: 190px; 
+    color:#5b00b5;
+}
+#All-Input input:hover{
+    box-shadow: 0px 7px 15px black;
+}
+#BTN{
+    text-align: center;
+    margin-top: 25px;
+}
+#btn-submit{
+    margin:0px 25px;
+    padding:7px 10px;
+    /* background-color: #5b00b5; */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#btn-Reset{
+    margin:0px 25px;
+    padding:7px 10px;
+    background-color:red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#data-of-curd{
+    margin-top:800px;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+.table{
+    border: 1px solid rgba(0, 0, 0, 0.473);
+    /* background-color: #5b00b5; */
+    padding: 10px 40px;
+    background-color: rgb(252,103,1);
+    border-radius: 5px;
+
+
+}
+.tablehead{
+    border: 1px solid rgba(0, 0, 0, 0.473);
+    /* background-color: #5b00b5; */
+        padding: 10px 10px;
+        background-color: rgb(252,103,1);
+        border-radius: 5px;
+
+
+}
+table th{
+    /* background-color: #5b00b5; */
+    color: #fff;
+    text-align: center;
+    margin-left: 10px;
+    padding: 20px 10px;
+    background-color: rgb(252,103,1);
+    /* background-image: linear-gradient( rgb(252,103,1) ,white); */
+
+
+
+} 
+table td{
+    background-color:white;
+    color:black;
+    text-align: center;
+vertical-align:middle;
+        /* background-image: linear-gradient( rgb(252,103,1) ,white); */
+
+} 
+
+/* #email-data{
+    padding: 0px 150px;
+} */
+/* #Table button:first-child{
+    background-color: rgb(8, 255, 16);
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+#Table button:last-child{
+    background-color: rgb(255, 0, 0);
+    /* padding: 10px; */
+    /* border: none;
+    color: #fff;
+    border-radius: 5px; */
+
+/* Pop up display */
+#Edit-File{
+    padding: 35px;
+}
+#Update input{
+    border: none;
+    padding: 7px;
+    margin: 0px 15px;
+    border-radius: 5px;
+    width: 190px; 
+    color:#5b00b5;
+    background-color: rgb(171, 211, 226);
+}
+#Update input:hover{
+    box-shadow: 0px 7px 15px black;
+}
+#EData {
+    text-align: center;
+    margin-top: 25px;
+}
+#btn-Update{
+    margin:0px 25px;
+    padding:7px 10px;
+    background-color: #5b00b5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#btn-Clear{
+    margin:0px 25px;
+    padding:7px 10px;
+    background-color:red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#Edit-lable{
+    margin-bottom: 10px;
+}
+
+
+#div-of-Edit{
+    z-index: 2;
+    position: relative;
+    bottom: 300px;
+    display: none;
+}
+/* //header */
+
+.row header{
+    height: 100px;
+    background-color: rgb(255,110,7);
+    border: 1px solid white;
+    width: auto;
+}
+.container-fluid{
+    height: 80px;
+    border: 1px solid white;
+    width: 1360px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} 
+.comapny_name{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+
